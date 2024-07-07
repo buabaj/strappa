@@ -146,18 +146,13 @@ all_checks: format ruff-fix lint test ]
 
 
 def create_requirements_files() -> None:
-    strappa_content = """
+    strappa_requirements = """
 pytest
 ruff
 mypy
 pytest-cov
 """
-    create_file("requirements-strappa.txt", strappa_content)
-
-    requirements_content = """
-        -r requirements-strappa.txt
-    """
-    create_file("requirements.txt", requirements_content)
+    create_file("requirements.txt", strappa_requirements)
     print("Created requirements.txt and requirements-strappa.txt")
 
 
