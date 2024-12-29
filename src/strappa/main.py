@@ -36,7 +36,7 @@ def run_in_venv(command: str, venv_path: Path = Path(".venv")) -> None:
         sys.exit(1)
 
 
-def copy_templates() -> None:
+def copy_config_files() -> None:
     create_files()
     print("Created requirements.txt and requirements-strappa.txt")
 
@@ -44,6 +44,7 @@ def setup_project() -> None:
     print("Setting up project in the current directory")
 
     create_virtual_environment()
+    copy_config_files()
 
     ensure_directory("src")
     ensure_directory("tests")
