@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 import venv
 
-from strappa.utils import create_files, ensure_directory
+from strappa.utils import create_config_files, ensure_directory
 
 def create_virtual_environment(venv_path: Path = Path(".venv")) -> None:
     venv.create(venv_path, with_pip=True)
@@ -37,7 +37,7 @@ def run_in_venv(command: str, venv_path: Path = Path(".venv")) -> None:
 
 
 def copy_config_files() -> None:
-    create_files()
+    create_config_files()
     print("Created requirements.txt and requirements-strappa.txt")
 
 def setup_project() -> None:

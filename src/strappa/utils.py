@@ -22,9 +22,6 @@ def create_config_files() -> None:
     copy_template("requirements.txt.template", "requirements.txt")
 
 
-def create_files() -> None:
-    create_config_files()
-
 
 def run_command(command: str) -> None:
     subprocess.run(command, shell=True, check=True)

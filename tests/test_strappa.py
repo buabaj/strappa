@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from strappa.main import (
     get_activation_script,
     run_in_venv,
-    create_files
+    create_config_files
 )
 
 
@@ -43,7 +43,8 @@ def test_run_in_venv(mock_run: str):
 
 
 def test_create_files(temp_dir: temp_dir):
-    create_files()
+    create_config_files()
+
     assert (temp_dir / "pyproject.toml").exists()
     with open(temp_dir / "pyproject.toml") as f:  # no
         content = f.read()
