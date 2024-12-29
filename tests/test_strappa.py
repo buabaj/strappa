@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 from typing import Any
 import pytest
+
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
@@ -10,8 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from strappa.main import (
     get_activation_script,
     run_in_venv,
-    create_pyproject_toml,
-    create_makefile,
+    create_files
 )
 
 
@@ -42,17 +42,15 @@ def test_run_in_venv(mock_run: str):
     assert kwargs["check"] is True
 
 
-def test_create_pyproject_toml(temp_dir: temp_dir):
-    create_pyproject_toml()
+def test_create_files(temp_dir: temp_dir):
+    create_files()
     assert (temp_dir / "pyproject.toml").exists()
     with open(temp_dir / "pyproject.toml") as f:  # no
         content = f.read()
         assert "[tool.pytest.ini_options]" in content
 
-
-def test_create_makefile(temp_dir: temp_dir):
-    create_makefile()
     assert (temp_dir / "Makefile").exists()
+
     with open(temp_dir / "Makefile") as f:
         content = f.read()
         assert ".PHONY: test" in content
